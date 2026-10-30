@@ -1,9 +1,9 @@
 <div align="center">
   <img src="docs/branding/ai-mind-robot.png" width="140" alt="AI Mind robot mascot" />
 
-  # AI Mind
+  # AI Mind — Flutter AI Chatbot & Voice Assistant
 
-  **A Flutter AI assistant with real-time LLM chat, voice conversations, and Firebase-backed history.**
+  **Flutter AI chatbot and voice assistant with Groq LLM streaming, FastAPI, Firebase Authentication, and Firestore chat history.**
 
   [![Flutter](https://img.shields.io/badge/Flutter-Mobile-02569B?logo=flutter&logoColor=white)](https://flutter.dev/)
   [![Dart](https://img.shields.io/badge/Dart-Language-0175C2?logo=dart&logoColor=white)](https://dart.dev/)
@@ -18,7 +18,7 @@
 
 ## Overview
 
-**AI Mind** is an Android-tested, Flutter-based AI assistant featuring **streaming text conversations**, **turn-based voice interaction**, and **account-scoped conversation history**. A Python **FastAPI** service handles authenticated requests to **Groq**, keeping the provider API key out of the mobile app.
+**AI Mind** is an Android-tested **Flutter AI chatbot and voice assistant** featuring **real-time streaming LLM chat**, **speech-to-text**, **text-to-speech**, and **account-scoped Firebase Firestore conversation history**. A Python **FastAPI** service handles authenticated requests to **Groq**, keeping the provider API key out of the mobile app.
 
 The interface features a warm ivory/lavender design, a compact Markdown-capable chat view, and a custom animated **Aurora Orb** that reflects voice-session states. This is a **developer portfolio project**; it requires separately configured Firebase and server credentials and is **not a hosted, publicly available AI service**.
 
