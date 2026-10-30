@@ -1,0 +1,57 @@
+# Flutter/Dart outputs
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+**/build/
+
+# Local IDE / machine configuration
+.idea/
+.vscode/
+*.iml
+.DS_Store
+android/local.properties
+android/key.properties
+android/.gradle/
+android/captures/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+
+# Signing and server credentials
+**/.env
+**/.env.*
+!**/.env.example
+**/*.pem
+**/*.p12
+**/*.p8
+**/*.jks
+**/*.keystore
+**/*service-account*.json
+**/*service_account*.json
+**/*firebase-admin*.json
+**/*private-key*.json
+**/secrets.*
+
+# Backend local state
+backend/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/
+*.pyc
+*.log
+
+# Private development records
+backups/
+artifacts/
+design_refs/
+private/
+recordings/
+*.mp4
+*.mov
+*.zip
+
+/android/app/google-services.json

@@ -1,0 +1,1 @@
+void writeTrace(String record) {}

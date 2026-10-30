@@ -1,0 +1,1 @@
+void writeVoiceTrace(String record) {}

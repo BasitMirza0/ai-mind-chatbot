@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original native counterpart of Flutter's MindMark, for Android 12 launch. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="100" android:viewportHeight="100">
+    <path android:fillColor="#6551C8"
+        android:pathData="M30,0 H70 Q100,0 100,30 V70 Q100,100 70,100 H30 Q0,100 0,70 V30 Q0,0 30,0 Z" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M38,25 H62 Q79,25 79,42 V53 Q79,70 62,70 H47 Q38,78 29,80 L34,69 Q21,66 21,53 V42 Q21,25 38,25 Z" />
+    <path android:fillColor="#6551C8"
+        android:pathData="M36,47 a4,4 0,1 0,8,0 a4,4 0,1 0,-8,0 M56,47 a4,4 0,1 0,8,0 a4,4 0,1 0,-8,0" />
+    <path android:fillColor="@android:color/transparent" android:strokeColor="#6551C8"
+        android:strokeWidth="2.3" android:strokeLineCap="round"
+        android:pathData="M44,55 Q50,61 56,55" />
+</vector>

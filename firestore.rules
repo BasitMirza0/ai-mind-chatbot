@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) {
+      return request.auth != null && request.auth.uid == uid &&
+        request.auth.token.firebase.sign_in_provider in ['password', 'google.com'];
+    }
+    function validTitle(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() <= 200;
+    }
+    match /users/{uid}/chats/{chatId} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) &&
+        request.resource.data.keys().hasAll(['title', 'createdAt', 'updatedAt']) &&
+        request.resource.data.keys().hasOnly(['title', 'type', 'createdAt', 'updatedAt']) &&
+        validTitle(request.resource.data) &&
+        (!('type' in request.resource.data) || request.resource.data.type in ['chat', 'voice']) &&
+        request.resource.data.createdAt == request.time &&
+        request.resource.data.updatedAt == request.time;
+      // Preserve legacy records, including records created before 'type' existed.
+      allow update: if owner(uid) &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['title', 'updatedAt']) &&
+        validTitle(request.resource.data) &&
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['updatedAt']) ||
+          request.resource.data.updatedAt == request.time);
+      allow delete: if owner(uid);
+
+      match /messages/{messageId} {
+        allow read, delete: if owner(uid);
+        allow create: if owner(uid) &&
+          exists(/databases/$(database)/documents/users/$(uid)/chats/$(chatId)) &&
+          request.resource.data.keys().hasAll(['role', 'text', 'timestamp']) &&
+          request.resource.data.keys().hasOnly(['role', 'text', 'timestamp']) &&
+          request.resource.data.role in ['user', 'bot'] &&
+          request.resource.data.text is string &&
+          request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 100000 &&
+          request.resource.data.timestamp == request.time;
+        // Current client appends messages; editing historical messages is not required.
+        allow update: if false;
+      }
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
